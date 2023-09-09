@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Image Downloader</title>
+    <link rel="stylesheet" type="text/css" href="./../dist/output.css" />
+  </head>
+  <body
+    class="w-[600px] h-[600px] overflow-hidden flex justify-center items-center bg-[#f2bdcd]"
+  >
+    <!-- Initial Page -->
+    <div class="text-center" id="initialPage">
+      <h1 class="text-5xl font-bold m-6">Sankaku Downloader</h1>
+      <button class="btn" id="getImagesBtn">Start</button>
+    </div>
+
+    <!-- Selection Page (hidden by default) -->
+    <div class="flex-col items-center hidden" id="secondPage">
+      <h2 class="text-3xl font-bold m-6">Select Image Criteria</h2>
+
+      <form class="flex flex-col justify-center space-y-3" id="imageForm">
+        <select class="select w-full max-w-xs" id="groupSelect">
+          <option disabled selected>Select Tab Group</option>
+        </select>
+
+        <select class="select w-full max-w-xs" id="attributeType">
+          <option disabled selected>Choose Attribute Type</option>
+          <option value="class">Class</option>
+          <option value="id">ID</option>
+          <option value="data">Data Attribute</option>
+          <option value="src">SRC Contains</option>
+        </select>
+
+        <input
+          class="input w-full max-w-xs"
+          type="text"
+          id="attributeValue"
+          placeholder="Enter Attribute Value"
+        />
+        <button class="btn" type="submit" id="previewBtn">Search Images</button>
+      </form>
+    </div>
+
+    <!-- Preview and Selection Page (hidden by default) -->
+    <div class="p-0 flex-col h-screen hidden" id="previewPage">
+      <button class="btn m-4" id="selectAllBtn">Select All</button>
+      <div class="text-3xl font-bold" id="noContent"></div>
+      <div
+        class="grid grid-cols-4 m-3 overflow-y-auto overflow-x-hidden flex-grow"
+        id="imageGrid"
+      >
+        <!-- Images will be populated here with checkboxes -->
+      </div>
+      <div class="p-4 flex justify-center gap-2">
+        <button class="btn" id="goBack">Back</button>
+        <button class="btn" id="downloadBtn">ZIP</button>
+      </div>
+    </div>
+
+    <div class="flex-col hidden" id="downloadStatus">
+      <div id="loadingMessage">Zipping images... Please wait.</div>
+      <div class="flex-col text-3xl font-bold hidden" id="downloadReadyMessage">
+        Your files are ready!
+        <div class="p-4 flex justify-center gap-2">
+          <button class="btn btn-primary" id="downloadZIPBtn">Download</button>
+          <button class="btn" id="startOver">Start Over</button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="notificationPopup"
+      class="fixed bottom-4 right-4 bg-red-500 text-white px-4 py-2 rounded-md shadow-lg transform scale-0 transition-transform duration-300 origin-top-right"
+    >
+      <span id="notificationMessage"></span>
+    </div>
+
+    <script type="module" src="popup.js"></script>
+    <script src="jszip.min.js"></script>
+  </body>
+</html>
