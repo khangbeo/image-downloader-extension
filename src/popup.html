@@ -41,11 +41,14 @@
     </div>
 
     <!-- Preview and Selection Page (hidden by default) -->
-    <div class="p-0 flex-col h-screen hidden" id="previewPage">
+    <div
+      class="p-0 flex-col justify-center items-center h-screen hidden"
+      id="previewPage"
+    >
       <button class="btn m-4" id="selectAllBtn">Select All</button>
-      <div class="text-3xl font-bold" id="noContent"></div>
+      <div class="text-center text-3xl font-bold" id="noContent"></div>
       <div
-        class="grid grid-cols-4 m-3 overflow-y-auto overflow-x-hidden flex-grow"
+        class="grid grid-cols-4 m-2 overflow-y-auto overflow-x-hidden flex-grow"
         id="imageGrid"
       >
         <!-- Images will be populated here with checkboxes -->
@@ -54,17 +57,24 @@
         <button class="btn" id="goBack">Back</button>
         <button class="btn" id="downloadBtn">ZIP</button>
       </div>
+      <span id="selectedImageCount">0 images selected</span>
     </div>
 
-    <div class="flex-col hidden" id="downloadStatus">
+    <div
+      class="flex-col justify-center items-center hidden"
+      id="downloadStatus"
+    >
       <div id="loadingMessage">Zipping images... Please wait.</div>
-      <div class="flex-col text-3xl font-bold hidden" id="downloadReadyMessage">
+      <span
+        class="text-center text-3xl font-bold hidden"
+        id="downloadReadyMessage"
+      >
         Your files are ready!
         <div class="p-4 flex justify-center gap-2">
           <button class="btn btn-primary" id="downloadZIPBtn">Download</button>
           <button class="btn" id="startOver">Start Over</button>
         </div>
-      </div>
+      </span>
     </div>
 
     <div
@@ -75,6 +85,6 @@
     </div>
 
     <script type="module" src="popup.js"></script>
-    <script src="jszip.min.js"></script>
+    <script src="../vendor/jszip.min.js"></script>
   </body>
 </html>
